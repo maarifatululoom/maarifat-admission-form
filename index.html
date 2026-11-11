@@ -88,7 +88,7 @@ footer a{position:relative;z-index:1;display:inline-block;border:1px solid rgba(
 footer a:hover{background:rgba(212,168,75,.3);transform:translateY(-2px)}
 footer .fn{font-size:19px;margin:18px 0 6px}
 .crs label{display:flex;align-items:center;gap:10px;margin:8px 0;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:var(--field);cursor:pointer;font-weight:500;font-size:14px}.crs input{width:20px;height:20px;flex:none;padding:0;accent-color:var(--navy)}.crs label span{flex:1}.crs label b{color:var(--gold);white-space:nowrap}.crs label.on{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,168,75,.2)}.sfee{margin-top:10px;font-weight:700;font-size:14.5px}
-.emb .pill.l,.emb footer{display:none}.emb body{min-height:0}
+.emb .pill.l,.emb footer{display:none}.emb,.emb body{height:auto;min-height:0}
 @media(prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -219,7 +219,7 @@ $('f').onsubmit=async ev=>{
 document.querySelectorAll('#f>*').forEach((e,i)=>e.style.setProperty('--i',i));
 setTheme(localStorage.getItem('dark')==='1');applyLang();
 // When shown inside the academy website, tell the page how tall the form is so it can grow without an inner scrollbar
-if(window.parent!==window){document.documentElement.classList.add('emb');const send=()=>{try{parent.postMessage({maarifatForm:document.documentElement.scrollHeight},'*')}catch(e){}};if(window.ResizeObserver)new ResizeObserver(send).observe(document.body);addEventListener('load',send);addEventListener('resize',send);send()}
+if(window.parent!==window){document.documentElement.classList.add('emb');const send=()=>{try{parent.postMessage({maarifatForm:Math.ceil(document.body.getBoundingClientRect().height)},'*')}catch(e){}};if(window.ResizeObserver)new ResizeObserver(send).observe(document.body);addEventListener('load',send);addEventListener('resize',send);send()}
 // fee, discounts, due day, name and logo come from the academy's Settings
 if(!DEMO)fetch(SB+'/rest/v1/rpc/public_settings',{method:'POST',headers:{'Content-Type':'application/json',apikey:KEY},body:'{}'}).then(r=>r.json()).then(s=>{
   if(!s||typeof s!=='object')return;
