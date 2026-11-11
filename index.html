@@ -152,7 +152,7 @@ const $=id=>document.getElementById(id), t=k=>(T[lang][k]||k).replace('{d}',lang
 if(DEMO){$('dbar').classList.remove('hide');document.body.style.paddingTop='36px'}
 const levels=[['Noorani Qaida','qaida'],['Nazra Quran','nazra'],['Hifz-ul-Quran','hifz'],['Tajweed','tajweed']];
 // Course list: [name used by the app, key, monthly fee in Rs.]. A fee of null means 'use the base fee from Settings'. Edit the numbers here to change prices.
-const COURSES=[['Noorani Qaida','qaida',2000],['Nazra Quran','nazra',null],['Hifz-ul-Quran','hifz',3000],['Tajweed','tajweed',2500],['Tafseer','tafseer',3000],['40 Hadith Memorization in 40 Days','hadith',500]];
+const COURSES=[['Noorani Qaida','qaida',2000],['Nazra Quran','nazra',3000],['Hifz-ul-Quran','hifz',3000],['Tajweed','tajweed',2500],['Tafseer','tafseer',3000],['40 Hadith Memorization in 40 Days','hadith',500]];
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cprice=c=>c[2]==null?BASE:c[2];
 const cfee=k=>(k.courses||[]).reduce((s,key)=>{const c=COURSES.find(x=>x[1]===key);return s+(c?cprice(c):0)},0);
